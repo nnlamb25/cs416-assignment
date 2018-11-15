@@ -148,5 +148,46 @@ void display(const char board[][SIZE])
  *******************************************/
 bool didWin(const char board[][SIZE], char turn)
 {
+  // Check Rows
+  for (int i = 0; i < SIZE; i++)
+  {
+    for (int j = 0; j < SIZE; j++)
+    {
+      if (board[i][j] != turn)
+        break;
+      else if (j == SIZE - 1)
+        return true;
+    }
+  }
+
+  // Check Cols
+  for (int i = 0; i < SIZE; i++)
+  {
+    for (int j = 0; j < SIZE; j++)
+    {
+      if (board[j][i] != turn)
+        break;
+      else if (j == SIZE - 1)
+        return true;
+    }
+  }
+
+  // Check Diagonals
+  for (int i = 0, j = 0; i < SIZE; i++, j++)
+  {
+    if (board[i][j] != turn)
+      break;
+    else if (i == SIZE - 1)
+      return true;
+  }
+
+  for (int i = 0, j = SIZE - 1; i < SIZE; i++, j--)
+  {
+    if (board[i][j] != turn)
+      break;
+    else if (i == SIZE - 1)
+      return true;
+  }
+
    return false;
 }
